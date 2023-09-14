@@ -1,0 +1,30 @@
+﻿@page "/counter"
+
+<PageTitle>Counter</PageTitle>
+
+<input type="text" @bind="@_Number" />
+<button @onclick="IncrementCount">Increase</button>
+<h1>@_Number</h1>
+
+@if (_checkBoxVariable)
+{
+    <h1>Hello</h1>
+}
+else
+{
+    <h1>No</h1>
+}
+
+<label for="ch">CheckBoxTesting</label>
+<input id="ch" type="checkbox" @bind="_checkBoxVariable" />
+
+@code {
+    int _Number { get; set; } = 1;
+    bool _checkBoxVariable { get; set; } = false;
+
+    private void IncrementCount()
+    {
+        _Number++;
+    }
+
+}

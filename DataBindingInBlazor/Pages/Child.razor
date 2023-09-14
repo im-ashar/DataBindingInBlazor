@@ -1,0 +1,20 @@
+﻿<h3>Child</h3>
+<p>ChildNumber: @ChildNumber</p>
+<button @onclick="@ChildNumberIncrease">Update Value From Child</button>
+@code {
+    [Parameter]
+    public int ChildNumber{ get; set; }
+
+    [Parameter]
+    public EventCallback<int> ChildNumberChanged{ get; set; } //Bydefault property kay end pr Changed likh dena hai
+    [Parameter]
+    public EventCallback<int> ChildNumberNewValue{ get; set; } //ab nam change krdiya hai tw parent mai bhi btna hai asy @bind-ChildNumber:event="ChildNumberNewValue"
+
+    async void ChildNumberIncrease()
+    {
+        ChildNumber++;
+
+        // await ChildNumberChanged.InvokeAsync(ChildNumber);
+         await ChildNumberNewValue.InvokeAsync(ChildNumber);
+    }
+}

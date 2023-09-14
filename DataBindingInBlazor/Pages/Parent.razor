@@ -1,0 +1,15 @@
+﻿@page "/parent"
+<h3>Parent</h3>
+<p>ParentNumber: @Number</p>
+<button @onclick="NumberIncrease">Update Value From Parent</button>
+<Child @bind-ChildNumber="Number" @bind-ChildNumber:event="ChildNumberNewValue"></Child>
+
+@code {
+    public int Number { get; set; } = 1;
+
+    void NumberIncrease()
+    {
+        Number++;
+    }
+}
+
